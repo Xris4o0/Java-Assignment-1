@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +11,17 @@ import java.util.*;
 
 import javax.mail.*;
 import javax.mail.internet.*;
+
+/*	
+ *	
+ * Project: StressGrammers	
+ * Assignment: Java Assignment 1	
+ * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin	
+ * Student Number: 101107083, 100719969, 101091788	
+ * Date: Oct. 20, 2019	
+ * Description: This is a project that can log in, register, and view a dashboard page. 	
+ * 	
+ */
 
 @WebServlet("/EmailSender")
 public class EmailSender extends HttpServlet {
