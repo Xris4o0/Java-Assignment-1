@@ -1,3 +1,5 @@
+DELETE DATABASE IF EXISTS COMP3095;
+
 CREATE DATABASE IF NOT EXISTS COMP3095;
 USE COMP3095;
 grant all on COMP3095.* to 'admin'@'localhost' identified by 'admin'; 
