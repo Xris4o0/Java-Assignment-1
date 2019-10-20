@@ -29,8 +29,8 @@ public class LoginServlet extends HttpServlet {
 		doPost(request,response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("Authenticate").forward(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		request.getRequestDispatcher("Authenticate").forward(request, response);		
 	}
 
 }

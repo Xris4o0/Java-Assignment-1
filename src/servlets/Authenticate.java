@@ -1,6 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import classes.User;
+import classes.VerifyRecaptcha;
 // import net.tanesha.recaptcha.ReCaptchaImpl;
 // import net.tanesha.recaptcha.ReCaptchaResponse;
 import database.DatabaseAccess;
@@ -72,29 +76,47 @@ public class Authenticate extends HttpServlet {
 	public void authen(User user, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		
+		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
-		// Direct user back to index if missing required fields
-		if (user.getUsername().isEmpty() || request.getParameter("adminPassword").isEmpty()) {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		} else {
-			authDao = null;
-			// Get credentials
-			user.getUsername();
-			
-			// Connect to database to validate
-			try {
-				authDao.checkCredentials(user.getUsername(), request.getParameter("adminPassword"));
-			} catch (Exception e) {
-				e.printStackTrace();
+		if (verify) {
+			// Direct user back to index if missing required fields
+			if (user.getUsername().isEmpty() || request.getParameter("adminPassword").isEmpty()) {
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			} 
+			else {
+				authDao = null;
+				// Get credentials
+				user.getUsername();
+				
+				// Connect to database to validate
+				try {
+					authDao.checkCredentials(user.getUsername(), request.getParameter("adminPassword"));
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				// Store in a session object
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+				request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 			}
-
-			// Store in a session object
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
-
+		} 
+		else {
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(
+					"/index.jsp");
+			PrintWriter out = response.getWriter();
+			if (verify) {
+				out.println("<font color=red>Either user name or password is wrong.</font>");
+			} else {
+				out.println("<font color=red>You missed the Captcha.</font>");
+			}
+			rd.include(request, response);
 		}
 	}
-
+		
 }
+
+
