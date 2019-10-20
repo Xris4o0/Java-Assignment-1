@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.DatabaseAccess;
 
-import java.sql.DriverManager; 
-import java.sql.*;
 @WebServlet("/RegistrationAuthenticate")
 public class RegistrationAuthenticate extends HttpServlet {
 	private static final long serialVersionUID = 1L;

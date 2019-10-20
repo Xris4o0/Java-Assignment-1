@@ -14,7 +14,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Forms</title>
-<script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+<!-- <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script> -->
 </head>
 <body>
 	<form method="post" action="LoginServlet">
@@ -24,10 +24,12 @@
 		<br>
 
 		<%
-			/*
-		
+			
+		/*
 			ReCaptcha c = ReCaptchaFactory.newReCaptcha("6Le6m7wUAAAAAMKKFEV-FCAHyjatbXuFYHxzK4UN","6Le6m7wUAAAAAPnZwErOTMjbcHAMM-tzdNB63GFq", false);
 			out.print(c.createRecaptchaHtml(null, null));
+		*/
+			/*
 			
 			// remoteAddr --> Users IP address
 			String remoteAddr = request.getRemoteAddr();
@@ -50,6 +52,12 @@
 		%>			
 		<button>Login</button>
 		<button>Register</button>
+		<button
+		class="g-recaptcha"
+		data-sitekey=""
+		data-callback="">
+			Submit
+		</button>
 	</form>
 	<a href="#">Forgot your password?</a>
 
