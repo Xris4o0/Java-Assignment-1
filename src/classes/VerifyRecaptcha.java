@@ -11,6 +11,17 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.net.ssl.HttpsURLConnection;
 
+/*
+ *
+ *  Project: StressGrammers
+ * Assignment: Java Assignment 1
+ * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
+ * Student Number: 101107083, 100719969, 101091788
+ * Date: Oct. 20, 2019
+ * Description: This is a project that can log in, register, and view a dashboard page. 
+ * 
+ */
+
 public class VerifyRecaptcha {
 	public static final String url = "https://www.google.com/recaptcha/api/siteverify";
 	public static final String secret = "6Lf4hL4UAAAAAHbg87ZzyTgGJn3XlI7IK7GjQzD5";

@@ -5,6 +5,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
+/*
+ *
+ *  Project: StressGrammers
+ * Assignment: Java Assignment 1
+ * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
+ * Student Number: 101107083, 100719969, 101091788
+ * Date: Oct. 20, 2019
+ * Description: This is a project that can log in, register, and view a dashboard page. 
+ * 
+ */
+
 public class DatabaseAccess {
 	static private final String username = "admin";
 	static private final String password = "P@ssword1";
