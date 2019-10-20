@@ -18,11 +18,14 @@ import classes.VerifyRecaptcha;
 import database.DatabaseAccess;
 
 /*
- * Responsibilities: 
- * -Validating a forwarded username and password
- * -Will not generate any HTML
- * -If any mandatory parameters are missing, direct user back without display error messages
- * -Store user info in a session object and direct to dashboard
+ *
+ *  Project: StressGrammers
+ * Assignment: Java Assignment 1
+ * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
+ * Student Number: 101107083, 100719969, 101091788
+ * Date: Oct. 20, 2019
+ * Description: This is a project that can log in, register, and view a dashboard page. 
+ * 
  */
 
 @WebServlet("/Authenticate")

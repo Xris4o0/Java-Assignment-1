@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
- * Responsibilities:
- * -user for the necessary credentials (username / password) 
- * -contain a “reCaptcha” check box that will help to verify human interaction
- * -user requests a page that requires a user to be successfully logged in first 
- * -displaying error messages
- * -credentials --> username=admin@isp.net, password=P@ssword1
+ *
+ *  Project: StressGrammers
+ * Assignment: Java Assignment 1
+ * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
+ * Student Number: 101107083, 100719969, 101091788
+ * Date: Oct. 20, 2019
+ * Description: This is a project that can log in, register, and view a dashboard page. 
  * 
  */
 
