@@ -68,7 +68,7 @@
 			<button class="button" type="button">Tab 2</button>
 			<button class="button" type="button">Tab 3</button>
 			<form action="LogoutServlet" method="post" class="header-right">
-				<button class="button" type="button">${user.adminEmail} Logout</button>
+				Welcome ${user.getName()}! <button class="button" type="submit">Logout</button>
 			</form>
 		</div>
 		<p id="title">Dashboard</p>

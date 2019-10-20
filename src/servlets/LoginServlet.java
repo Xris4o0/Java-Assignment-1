@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classes.User;
-
 /*
  * Responsibilities:
  * -user for the necessary credentials (username / password) 
@@ -31,17 +29,8 @@ public class LoginServlet extends HttpServlet {
 		doPost(request,response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user = new User();
-		
-		String username = request.getParameter("adminEmail");
-		String password = request.getParameter("adminPassword");
-		
-		user.setUsername(username);
-		user.setPassword(password);
-		
-		user.login(username, password, request, response);
-				
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		request.getRequestDispatcher("Authenticate").forward(request, response);		
 	}
 
 }
