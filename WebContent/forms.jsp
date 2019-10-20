@@ -18,7 +18,6 @@
 
 .button{
   font: bold 18px Arial;
-  text-decoration: none;
   background-color: #EEEEEE;
   color: #333333;
   padding: 2px 6px 2px 6px;
