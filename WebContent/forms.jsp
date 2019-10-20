@@ -19,7 +19,7 @@
 <body>
 	<form method="post" action="LoginServlet">
 		<p>Username: <input type="email" name="adminEmail" placeholder="Enter username"></p>
-		<p>Password: <input type="password" name="adminPassword"placeholder="Enter password"></p>
+		<p>Password: <input type="password" name="adminPassword"placeholder="Enter password" pattern=".{6,12}" required title="Passwords must be 6 to 12 characters and must contain at least 1 uppercase letter and at least 1 special character"></p>
 
 		<br>
 
