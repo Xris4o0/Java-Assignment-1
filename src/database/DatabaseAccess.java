@@ -91,7 +91,7 @@ public class DatabaseAccess {
 	public boolean checkCredentials(String username, String password) throws Exception {
 
 		if (connectDataBase() != null) {
-			// PS: Had to change username -> email (String query = "select * from USERS where username=? and password=?";)
+			// Had to change username -> email (String query = "select * from USERS where username=? and password=?";)
 			String query = "select * from USERS where email=? and password=?";
 			
 			PreparedStatement statm = connectDataBase().prepareStatement(query);

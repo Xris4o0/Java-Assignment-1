@@ -74,11 +74,20 @@ public class Authenticate extends HttpServlet {
 				user.getUsername();
 				// Connect to database to validate
 				try {
-					authDao.checkCredentials(user.getUsername(), request.getParameter("adminPassword"));
+					if(authDao.checkCredentials(user.getUsername(), request.getParameter("adminPassword"))) {
 					// Store in a session object
 					HttpSession session = request.getSession();
 					session.setAttribute("user", user);
 					request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+					}
+					else {
+						request.getRequestDispatcher("index.jsp").forward(request, response);
+						RequestDispatcher rd = getServletContext().getRequestDispatcher(
+								"/index.jsp");
+						PrintWriter out = response.getWriter();
+						out.println("<font color=red>Either email or password are incorrect.</font>");
+						rd.include(request, response);
+					}
 				}
 				catch (Exception e) {
 					e.printStackTrace();
