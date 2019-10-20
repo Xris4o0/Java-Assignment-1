@@ -14,7 +14,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Forms</title>
-<!-- <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script> -->
+<style>
+
+.button{
+  font: bold 18px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+
+}
+
+</style>
+<script src="https://www.recaptcha.net/recaptcha/api.js"></script>
 </head>
 <body>
 	<form method="post" action="LoginServlet">
@@ -24,43 +40,20 @@
 		<br>
 
 		<%
-			
-		/*
-			ReCaptcha c = ReCaptchaFactory.newReCaptcha("6Le6m7wUAAAAAMKKFEV-FCAHyjatbXuFYHxzK4UN","6Le6m7wUAAAAAPnZwErOTMjbcHAMM-tzdNB63GFq", false);
-			out.print(c.createRecaptchaHtml(null, null));
-		*/
 			/*
-			
-			// remoteAddr --> Users IP address
-			String remoteAddr = request.getRemoteAddr();
-			ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
-			reCaptcha.setPrivateKey("6Le6m7wUAAAAAPnZwErOTMjbcHAMM-tzdNB63GFq");
-
-			String challenge = request.getParameter("recaptcha_challenge_field");
-
-			// uresponse --> Contains user's answer to CAPTCHA
-			String uresponse = request.getParameter("recaptcha_response_field");
-			ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, uresponse);
-
-			if (reCaptchaResponse.isValid()) {
-				out.print("Answer was entered correctly!");
-			} else {
-				out.print("Answer is wrong");
-			}
-			
+			ReCaptcha c = ReCaptchaFactory.newReCaptcha("6Lf4hL4UAAAAAJa-tnbK6O8sFxbqfOEaz-aYKZNM","6Lf4hL4UAAAAAHbg87ZzyTgGJn3XlI7IK7GjQzD5", false);
+			out.print(c.createRecaptchaHtml(null, null));
+			// OLD KEYS "6Le6m7wUAAAAAMKKFEV-FCAHyjatbXuFYHxzK4UN","6Le6m7wUAAAAAPnZwErOTMjbcHAMM-tzdNB63GFq"
 			*/
 		%>			
-		<button>Login</button>
-		<button>Register</button>
-		<button
-		class="g-recaptcha"
-		data-sitekey=""
-		data-callback="">
-			Submit
-		</button>
+		
+		<div class="g-recaptcha" data-sitekey="6Lf4hL4UAAAAAJa-tnbK6O8sFxbqfOEaz-aYKZNM"></div>
+		<br/>
+		<a class="button" href="Registration.jsp">Register</a>
+		<input class="button" type="submit" value="Login">
 	</form>
+	
 	<a href="#">Forgot your password?</a>
-
 
 </body>
 </html>
