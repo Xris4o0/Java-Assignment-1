@@ -49,10 +49,11 @@
 			*/
 		%>			
 		<button>Login</button>
-		<button>Register</button>
+		
 	</form>
+	
 	<a href="#">Forgot your password?</a>
-
+    <a href="Registration.jsp"> Register</a>
 
 </body>
 </html>

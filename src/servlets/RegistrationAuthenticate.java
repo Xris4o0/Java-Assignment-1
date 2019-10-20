@@ -1,16 +1,18 @@
 package servlets;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import database.DatabaseAccess;
 
-import java.sql.DriverManager; 
-import java.sql.*;
+
 @WebServlet("/RegistrationAuthenticate")
 public class RegistrationAuthenticate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -54,8 +56,8 @@ public class RegistrationAuthenticate extends HttpServlet {
 						
 						//email the client need to do
 						
-						
-						request.getRequestDispatcher("SuccessfulRegistration.jsp").forward(request, response);
+					      
+						request.getRequestDispatcher("/EmailSender").forward(request, response);
 					}
 					else {request.setAttribute("message", "User exists already");
 					request.getRequestDispatcher("Registration.jsp").forward(request, response);
