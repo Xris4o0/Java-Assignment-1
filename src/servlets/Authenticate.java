@@ -11,7 +11,7 @@ import classes.User;
 
 /*
  * Responsibilities: 
- * -Validating a forarded username and password
+ * -Validating a forwarded username and password
  * -Will not generate any HTML
  * -If any mandatory parameters are missing, direct user back without display error messages
  * -Store user info in a session object and direct to dashboard
