@@ -18,7 +18,6 @@
 
 .button{
   font: bold 18px Arial;
-  text-decoration: none;
   background-color: #EEEEEE;
   color: #333333;
   padding: 2px 6px 2px 6px;
@@ -37,15 +36,7 @@
 		<p>Username: <input type="email" name="adminEmail" placeholder="Enter username" required></p>
 		<p>Password: <input type="password" name="adminPassword" placeholder="Enter password" pattern="(?=.*\W+)(?=.*[A-Z]).{6,12}" required title="Passwords must be 6 to 12 characters and must contain at least 1 uppercase letter and at least 1 special character"></p>
 
-		<br>
-
-		<%
-			/*
-			ReCaptcha c = ReCaptchaFactory.newReCaptcha("6Lf4hL4UAAAAAJa-tnbK6O8sFxbqfOEaz-aYKZNM","6Lf4hL4UAAAAAHbg87ZzyTgGJn3XlI7IK7GjQzD5", false);
-			out.print(c.createRecaptchaHtml(null, null));
-			// OLD KEYS "6Le6m7wUAAAAAMKKFEV-FCAHyjatbXuFYHxzK4UN","6Le6m7wUAAAAAPnZwErOTMjbcHAMM-tzdNB63GFq"
-			*/
-		%>			
+		<br>		
 		
 		<div class="g-recaptcha" data-sitekey="6Lf4hL4UAAAAAJa-tnbK6O8sFxbqfOEaz-aYKZNM"></div>
 		<br/>

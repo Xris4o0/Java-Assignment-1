@@ -9,7 +9,8 @@
 <body>
 <form action="EmailServlet" style="text-align:center">
 <h2>An email has been sent to ${email}. Please check your email.</h2>
-<button type="button">Back</button>
+
+<a href="index.jsp">Back</a>
 </form>
 
 </body>

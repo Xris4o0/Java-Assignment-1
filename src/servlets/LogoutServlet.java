@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 /*
  *
- *  Project: StressGrammers
+ * Project: StressGrammers
  * Assignment: Java Assignment 1
  * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
  * Student Number: 101107083, 100719969, 101091788

@@ -7,13 +7,13 @@ import java.sql.ResultSet;
 
 /*
  *
- *  Project: StressGrammers
+ * Project: StressGrammers
  * Assignment: Java Assignment 1
  * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
  * Student Number: 101107083, 100719969, 101091788
  * Date: Oct. 20, 2019
  * Description: This is a project that can log in, register, and view a dashboard page. 
- * 
+ * PS: Had to change username -> email
  */
 
 public class DatabaseAccess {
@@ -66,7 +66,7 @@ public class DatabaseAccess {
 		// .getConnection("jdbc:mysql://localhost:3306/"+database,username,password);
 
 		if (connectDataBase() != null) {
-
+			
 			String cmd = "SELECT * from users where email=?";
 			PreparedStatement statm = connectDataBase().prepareStatement(cmd);
 			statm.setString(1, mail);
@@ -91,8 +91,8 @@ public class DatabaseAccess {
 	public boolean checkCredentials(String username, String password) throws Exception {
 
 		if (connectDataBase() != null) {
-
-			String query = "select * from USERS where username=? and password=?";
+			// Had to change username -> email (String query = "select * from USERS where username=? and password=?";)
+			String query = "select * from USERS where email=? and password=?";
 			
 			PreparedStatement statm = connectDataBase().prepareStatement(query);
 			statm.setString(1, username);

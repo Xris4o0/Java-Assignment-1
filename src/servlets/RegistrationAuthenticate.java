@@ -1,23 +1,26 @@
 package servlets;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import database.DatabaseAccess;
 
-/*
- *
- *  Project: StressGrammers
- * Assignment: Java Assignment 1
- * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
- * Student Number: 101107083, 100719969, 101091788
- * Date: Oct. 20, 2019
- * Description: This is a project that can log in, register, and view a dashboard page. 
- * 
+/*	
+ *	
+ * Project: StressGrammers	
+ * Assignment: Java Assignment 1	
+ * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin	
+ * Student Number: 101107083, 100719969, 101091788	
+ * Date: Oct. 20, 2019	
+ * Description: This is a project that can log in, register, and view a dashboard page. 	
+ * 	
  */
 
 @WebServlet("/RegistrationAuthenticate")
@@ -63,8 +66,8 @@ public class RegistrationAuthenticate extends HttpServlet {
 						
 						//email the client need to do
 						
-						
-						request.getRequestDispatcher("SuccessfulRegistration.jsp").forward(request, response);
+					      
+						request.getRequestDispatcher("/EmailSender").forward(request, response);
 					}
 					else {request.setAttribute("message", "User exists already");
 					request.getRequestDispatcher("Registration.jsp").forward(request, response);

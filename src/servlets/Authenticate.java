@@ -19,7 +19,7 @@ import database.DatabaseAccess;
 
 /*
  *
- *  Project: StressGrammers
+ * Project: StressGrammers
  * Assignment: Java Assignment 1
  * Author(s): Jason Thai, Hristo Tsvetkov, Nunkedie Steeven Wemin
  * Student Number: 101107083, 100719969, 101091788
@@ -43,31 +43,6 @@ public class Authenticate extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
-		/*
-		// remoteAddr --> Users IP address
-		String remoteAddr = request.getRemoteAddr();
-		ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
-		reCaptcha.setPrivateKey("6Lf4hL4UAAAAAHbg87ZzyTgGJn3XlI7IK7GjQzD5");
-
-		String challenge = request.getParameter("recaptcha_challenge_field");
-
-		// uresponse --> Contains user's answer to CAPTCHA
-		String uresponse = request.getParameter("recaptcha_response_field");
-		ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, uresponse);
-		
-		if (reCaptchaResponse.isValid()) {
-		
-			User user = new User();
-			
-			user.setUsername(request.getParameter("adminEmail"));
-			
-			user.authen(user, request, response);
-		
-		} else {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}
-		*/
-		
 		User user = new User();
 		user.setUsername(request.getParameter("adminEmail"));
 		
@@ -83,43 +58,54 @@ public class Authenticate extends HttpServlet {
 		
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
-		if (verify) {
-			// Direct user back to index if missing required fields
-			if (user.getUsername().isEmpty() || request.getParameter("adminPassword").isEmpty()) {
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} 
-			else {
-				authDao = null;
+		// Direct user back to index if missing required fields
+		if (user.getUsername().isEmpty() || request.getParameter("adminPassword").isEmpty()) {
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(
+					"/index.jsp");
+			PrintWriter out = response.getWriter();
+			out.println("<font color=red>Either user name or password can't be empty.</font>");
+			rd.include(request, response);
+		}
+		else {
+			if (verify) {
+				authDao = new DatabaseAccess();
 				// Get credentials
 				user.getUsername();
-				
 				// Connect to database to validate
 				try {
-					authDao.checkCredentials(user.getUsername(), request.getParameter("adminPassword"));
+					if(authDao.checkCredentials(user.getUsername(), request.getParameter("adminPassword"))) {
+					// Store in a session object
+					HttpSession session = request.getSession();
+					session.setAttribute("user", user);
+					request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+					}
+					else {
+						request.getRequestDispatcher("index.jsp").forward(request, response);
+						RequestDispatcher rd = getServletContext().getRequestDispatcher(
+								"/index.jsp");
+						PrintWriter out = response.getWriter();
+						out.println("<font color=red>Either email or password are incorrect.</font>");
+						rd.include(request, response);
+					}
 				}
 				catch (Exception e) {
 					e.printStackTrace();
 				}
-
-				// Store in a session object
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
-				request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 			}
-		} 
-		else {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-					"/index.jsp");
-			PrintWriter out = response.getWriter();
-			if (verify) {
-				out.println("<font color=red>Either user name or password is wrong.</font>");
-			} else {
-				out.println("<font color=red>You missed the Captcha.</font>");
+			else {
+				RequestDispatcher rd = getServletContext().getRequestDispatcher(
+						"/index.jsp");
+				PrintWriter out = response.getWriter();
+				if (verify) {
+					out.println("<font color=red>Either user name or password is wrong.</font>");
+				} else {
+					out.println("<font color=red>You missed the Captcha.</font>");
+				}
+				rd.include(request, response);
 			}
-			rd.include(request, response);
 		}
 	}
-		
 }
 
 
